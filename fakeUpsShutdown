@@ -11,7 +11,7 @@ do
     result=`ping $IP -t 5 -w 5|grep ttl|wc -l`
     if [ $result == 0 ];then
         echo `date`": Disconnect." >> /var/log/Connection.log
-        let i=$i + 1
+        let i=$i+1
         echo $i
         if [ $i == $count ];then
             echo `date`": Now shutdown." >> /var/log/Connection.log
