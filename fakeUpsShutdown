@@ -5,6 +5,7 @@ min=1
 count=3
 #------------------#
 i=0
+let min=$min*60
 while true
 do
     result=`ping $IP -t 5 -w 5|grep ttl|wc -l`
