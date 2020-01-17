@@ -75,7 +75,7 @@ main(){
                 sed -i '/fakeUpsShutdown/d' /etc/crontab
                 cp fakeUpsShutdown /sbin/fakeUpsShutdown
                 chmod +x /sbin/fakeUpsShutdown
-                echo "@reboot root fakeUpsShutdown > /dev/null" >> /etc/crontab
+                echo "@reboot root /sbin/fakeUpsShutdown > /dev/null" >> /etc/crontab
                 systemctl restart cron
                 killall fakeUpsShutdown
                 fakeUpsShutdown
@@ -85,7 +85,7 @@ main(){
             ;;
         2 )
             echo "Uninstalling..."
-            rm /sbin/fakeUpsShutdown
+            rm /sbin/fakeUpsShutdown -rf
             sed -i '/fakeUpsShutdown/d' /etc/crontab
             systemctl restart cron
             killall fakeUpsShutdown
