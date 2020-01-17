@@ -1,7 +1,7 @@
 # fakeUpsShutdown
 
-> It's fake ups shutdown script. Script check to ping router ip address,if router can not be connect,then shutdown system. Support `debian9` `debian10` `ProxmoxVE 5` `ProxmoxVE 6`
-这是一个伪装ups关机的脚本。脚本会ping你设置的路由器ip，如果不通会执行关机。支持`debian9` `debian10` `ProxmoxVE 5` `ProxmoxVE 6`
+> It's fake ups shutdown script. Script check to ping router ip address,if router can not be connect,then shutdown system. Support `debian9` `debian10` `ProxmoxVE 5` `ProxmoxVE 6` `Openmediavault 4` `Openmediavault 5`
+这是一个伪装ups关机的脚本。脚本会ping你设置的路由器ip，如果不通会执行关机。支持`debian9` `debian10` `ProxmoxVE 5` `ProxmoxVE 6` `Openmediavault 4` `Openmediavault 5`
 
 # 一、工具准备
 
