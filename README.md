@@ -18,6 +18,7 @@
 export LC_ALL=C.UTF-8
 apt update && apt -y install git && git clone https://github.com/ivanhao/fakeupsshutdown.git
 cd fakeupsshutdown
+chmod +x config
 ./config
 ```
 
@@ -32,6 +33,7 @@ cd fakeupsshutdown
 - 如果网络无法使用，或命令行使用有困难，可以使用方式二下载zip包拷入系统中使用。
 然后执行以下命令进行安装配置：
 ```
+chmod +x config
 ./config
 ```
 
