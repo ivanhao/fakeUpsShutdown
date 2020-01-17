@@ -74,6 +74,7 @@ main(){
                 sed -i 's/^count.*$/count='$count'/g' fakeUpsShutdown
                 sed -i '/fakeUpsShutdown/d' /etc/crontab
                 cp fakeUpsShutdown /sbin/fakeUpsShutdown
+                chmod +x /sbin/fakeUpsShutdown
                 echo "@reboot root fakeUpsShutdown > /dev/null" >> /etc/crontab
                 systemctl restart cron
                 echo "Install complete!"
