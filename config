@@ -45,6 +45,10 @@ Wrong format!!!   input again: \
 格式不对！！！请重新输入： \
                 "
             COUNT
+        elif [ $count -lt 3 ];then
+            echo "Must more then 3.Input again: \
+该值必须大于3，请重新输入："
+            COUNT
         else
             break
         fi
