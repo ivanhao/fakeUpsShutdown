@@ -1,8 +1,8 @@
 #!/bin/bash
 #------------------#
-IP=192.168.5.1
-sec=2
-count=2
+IP=192.168.1.1
+min=1
+count=3
 #------------------#
 i=0
 while true
@@ -17,11 +17,11 @@ do
             echo "b"
             echo `date`": Now shutdown." >> /var/log/Connection.log
             i=0
-            shutdown -h -t 0
+            shutdown -h now
         fi
     else
         echo `date`": connected."
     fi
-    sleep $sec
+    sleep $min
 done
 

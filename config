@@ -17,17 +17,17 @@ Wrong format!!!   input again: \
     done
 }
 
-SEC(){
-    echo "Input sleep seconds:"
-    read sec
+MIN(){
+    echo "Input sleep minite:"
+    read min
     while true
     do
-        if [ ! `echo $sec|grep "^[0-9]*$"` ];then
+        if [ ! `echo $min|grep "^[0-9]*$"` ];then
             echo "\
 Wrong format!!!   input again: \
 格式不对！！！请重新输入： \
                 "
-            SEC
+            MIN
         else
             break
         fi
@@ -53,7 +53,7 @@ Wrong format!!!   input again: \
 main(){
     echo "Current config:"
     echo `cat fakeUpsShutdown|grep "^IP"`
-    echo `cat fakeUpsShutdown|grep "^sec"`
+    echo `cat fakeUpsShutdown|grep "^min"`
     echo `cat fakeUpsShutdown|grep "^count"`
     echo "-----------------"
     echo "Please choose:"
@@ -66,11 +66,11 @@ main(){
         1 )
             echo "Installing..."
             IP
-            SEC
+            MIN
             COUNT
-            if [[ $ip && $sec && $count ]];then
+            if [[ $ip && $min && $count ]];then
                 sed -i 's/^IP.*$/IP='$ip'/g' fakeUpsShutdown
-                sed -i 's/^sec.*$/sec='$sec'/g' fakeUpsShutdown
+                sed -i 's/^min.*$/min='$min'/g' fakeUpsShutdown
                 sed -i 's/^count.*$/count='$count'/g' fakeUpsShutdown
                 sed -i '/fakeUpsShutdown/d' /etc/crontab
                 cp fakeUpsShutdown /sbin/fakeUpsShutdown
