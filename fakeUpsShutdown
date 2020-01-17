@@ -8,7 +8,8 @@ i=0
 let min=$min*60
 while true
 do
-    for i in {1..$count}
+    sleep $min
+    for i in $(seq 1 $count)
     do
         result=`ping $IP -t 5 -w 5|grep ttl|wc -l`
         if [ $result == 0 ];then
@@ -22,7 +23,7 @@ do
         else
             echo `date`": connected."
         fi
+        sleep $count
     done
-    sleep $min
 done
 
