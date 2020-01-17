@@ -12,7 +12,6 @@ do
     if [ $result == 0 ];then
         echo `date`": Disconnect." >> /var/log/Connection.log
         let i=$i+1
-        echo $i
         if [ $i == $count ];then
             echo `date`": Now shutdown." >> /var/log/Connection.log
             i=0
