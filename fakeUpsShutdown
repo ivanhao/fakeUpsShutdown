@@ -8,18 +8,21 @@ i=0
 let min=$min*60
 while true
 do
-    result=`ping $IP -t 5 -w 5|grep ttl|wc -l`
-    if [ $result == 0 ];then
-        echo `date`": Disconnect." >> /var/log/Connection.log
-        let i=$i+1
-        if [ $i == $count ];then
-            echo `date`": Now shutdown." >> /var/log/Connection.log
-            i=0
-            shutdown -h now
+    for i in {1..$count}
+    do
+        result=`ping $IP -t 5 -w 5|grep ttl|wc -l`
+        if [ $result == 0 ];then
+            echo `date`": Disconnect." >> /var/log/Connection.log
+            let i=$i+1
+            if [ $i == $count ];then
+                echo `date`": Now shutdown." >> /var/log/Connection.log
+                i=0
+                shutdown -h now
+            fi
+        else
+            echo `date`": connected."
         fi
-    else
-        echo `date`": connected."
-    fi
+    done
     sleep $min
 done
 
