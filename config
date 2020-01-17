@@ -82,7 +82,7 @@ main(){
                 echo "@reboot root /sbin/fakeUpsShutdown > /dev/null" >> /etc/crontab
                 systemctl restart cron
                 killall fakeUpsShutdown > /dev/null
-                fakeUpsShutdown
+                nohup fakeUpsShutdown > /dev/null 2>&1 &
                 echo "Install complete!"
                 exit
             fi
