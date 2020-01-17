@@ -1,0 +1,100 @@
+#!/bin/bash
+#---
+IP(){
+    echo "Input router IP:"
+    read ip
+    while [ true ]
+    do
+        if [ ! `echo $ip|grep "^[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*$"` ];then
+            echo "\
+Wrong format!!!   input again: \
+格式不对！！！请重新输入： \
+"
+            IP
+        else
+            break
+        fi
+    done
+}
+
+SEC(){
+    echo "Input sleep seconds:"
+    read sec
+    while true
+    do
+        if [ ! `echo $sec|grep "^[0-9]*$"` ];then
+            echo "\
+Wrong format!!!   input again: \
+格式不对！！！请重新输入： \
+                "
+            SEC
+        else
+            break
+        fi
+    done
+}
+
+COUNT(){
+    echo "Input check cycle count:"
+    read count
+    while true
+    do
+        if [ ! `echo $count|grep "^[0-9]*$"` ];then
+            echo "\
+Wrong format!!!   input again: \
+格式不对！！！请重新输入： \
+                "
+            COUNT
+        else
+            break
+        fi
+    done
+}
+main(){
+    echo "Current config:"
+    echo `cat fakeUpsShutdown|grep "^IP"`
+    echo `cat fakeUpsShutdown|grep "^sec"`
+    echo `cat fakeUpsShutdown|grep "^count"`
+    echo "-----------------"
+    echo "Please choose:"
+    echo "1 ) Install"
+    echo "2 ) Uninstall"
+    echo "q ) Quit"
+    echo "Type word and press enter:"
+    read x
+    case $x in
+        1 )
+            echo "Installing..."
+            IP
+            SEC
+            COUNT
+            if [[ $ip && $sec && $count ]];then
+                sed -i 's/^IP.*$/IP='$ip'/g' fakeUpsShutdown
+                sed -i 's/^sec.*$/sec='$sec'/g' fakeUpsShutdown
+                sed -i 's/^count.*$/count='$count'/g' fakeUpsShutdown
+                sed -i '/fakeUpsShutdown/d' /etc/crontab
+                cp fakeUpsShutdown /sbin/fakeUpsShutdown
+                echo "@reboot root fakeUpsShutdown > /dev/null" >> /etc/crontab
+                systemctl restart cron
+                echo "Install complete!"
+                exit
+            fi
+            ;;
+        2 )
+            echo "Uninstalling..."
+            rm /sbin/fakeUpsShutdown
+            sed -i '/fakeUpsShutdown/d' /etc/crontab
+            systemctl restart cron
+            echo "Install complete!"
+            exit
+            ;;
+        q )
+            echo "Now quit."
+            ;;
+        * )
+            echo "Please input right word."
+            main
+    esac
+}
+
+main

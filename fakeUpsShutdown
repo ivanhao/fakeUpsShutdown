@@ -1,18 +1,20 @@
 #!/bin/bash
 #------------------#
-IP='192.168.1.1'
-sec=60
-count=3
+IP=192.168.5.1
+sec=2
+count=2
 #------------------#
 i=0
 while true
 do
     result=`ping $IP -t 5 -w 5|grep ttl|wc -l`
-    if [ $result = 0 ];then
+    if [ $result == 0 ];then
+        echo "a"
         echo `date`": Disconnect." >> /var/log/Connection.log
         i=`expr $i + 1`
         echo $i
         if [ $i == $count ];then
+            echo "b"
             echo `date`": Now shutdown." >> /var/log/Connection.log
             i=0
             shutdown -h -t 0
