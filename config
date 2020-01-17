@@ -77,6 +77,8 @@ main(){
                 chmod +x /sbin/fakeUpsShutdown
                 echo "@reboot root fakeUpsShutdown > /dev/null" >> /etc/crontab
                 systemctl restart cron
+                killall fakeUpsShutdown
+                fakeUpsShutdown
                 echo "Install complete!"
                 exit
             fi
@@ -86,7 +88,8 @@ main(){
             rm /sbin/fakeUpsShutdown
             sed -i '/fakeUpsShutdown/d' /etc/crontab
             systemctl restart cron
-            echo "Install complete!"
+            killall fakeUpsShutdown
+            echo "Uninstall complete!"
             exit
             ;;
         q )
