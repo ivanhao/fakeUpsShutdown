@@ -22,6 +22,6 @@ do
     else
         echo `date`": connected."
     fi
-    sleep $min
+    sleep `expr $min * 60`
 done
 
