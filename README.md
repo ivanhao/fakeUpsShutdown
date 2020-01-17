@@ -34,6 +34,7 @@ cd fakeupsshutdown
 ```
 ./config
 ```
+
 ![main](https://upload-images.jianshu.io/upload_images/4171480-50a64967b0ede749.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 选择install，输入1回车，进行安装。
@@ -47,6 +48,7 @@ min: 轮循的时间（分）
 count: 允许ping不通几次
 
 自动将脚本加入crontab, @reboot的方式，重启后会自动运行。
+
 ![steps](https://upload-images.jianshu.io/upload_images/4171480-5670bc8026cb8359.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
@@ -61,4 +63,5 @@ count: 允许ping不通几次
 ![qq](http://upload-images.jianshu.io/upload_images/4171480-e0204ead0fb41d5e.jpg)
 
 ## 如果觉得好的请捐赠一下^_^
+
 ![alipay](https://upload-images.jianshu.io/upload_images/4171480-04c3ebb5c11cfdf9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
