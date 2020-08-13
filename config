@@ -79,6 +79,7 @@ main(){
                 sed -i '/fakeUpsShutdown/d' /etc/crontab
                 cp fakeUpsShutdown /sbin/fakeUpsShutdown
                 chmod +x /sbin/fakeUpsShutdown
+                echo "" >> /etc/crontab
                 echo "@reboot root /sbin/fakeUpsShutdown > /dev/null" >> /etc/crontab
                 systemctl restart cron
                 killall fakeUpsShutdown > /dev/null
