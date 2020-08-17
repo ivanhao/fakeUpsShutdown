@@ -23,7 +23,7 @@ do
         else
             echo `date`": connected."
         fi
-        sleep $count
+        sleep $min
     done
 done
 
